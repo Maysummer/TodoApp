@@ -8,6 +8,9 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      screens: {
+        largerScreen: "376px",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -16,8 +19,8 @@ module.exports = {
       colors: {
         // Primary
         brightBlue: "hsl(220, 98%, 61%)",
-        gradBlue: 'hsl(192, 100%, 67%)',
-        gradPurple: 'hsl(280, 87%, 65%)',
+        gradBlue: "hsl(192, 100%, 67%)",
+        gradPurple: "hsl(280, 87%, 65%)",
 
         // Light Theme
         veryLightGray: "hsl(0, 0%, 98%)",
