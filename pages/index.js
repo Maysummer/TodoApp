@@ -71,7 +71,7 @@ export default function Home() {
 
   return (
     <main
-      className={`bg-[url(/assets/images/bg-mobile-light.jpg)] dark:bg-[url(/assets/images/bg-mobile-dark.jpg)] largerScreen:bg-[url(/assets/images/bg-desktop-light.jpg)] largerScreen:dark:bg-[url(/assets/images/bg-desktop-dark.jpg)]  bg-no-repeat bg-auto min-h-screen flex-col items-center ${josefinSans.className} dark:bg-veryDarkBlue flex`}
+      className={`bg-[url(/assets/images/bg-mobile-light.jpg)] dark:bg-[url(/assets/images/bg-mobile-dark.jpg)] largerScreen:bg-[url(/assets/images/bg-desktop-light.jpg)] largerScreen:dark:bg-[url(/assets/images/bg-desktop-dark.jpg)]  bg-no-repeat bg-auto largerScreen:bg-[length:100%_300px] w-full min-h-screen flex-col items-center ${josefinSans.className} dark:bg-veryDarkBlue flex`}
     >
       <div className="w-10/12 sm:w-8/12 md:w-6/12">
         <div className="flex justify-between items-center py-10 largerScreen:py-20">
