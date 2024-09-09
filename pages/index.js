@@ -111,7 +111,7 @@ export default function Home() {
             </div>
           </ul>
           <FIlterControls
-            classStyle="rounded-md pl-20 pr-20 h-12 flex justify-between items-center mt-4 sm:hidden"
+            classStyle="rounded-md h-12 flex justify-center items-center mt-4 sm:hidden"
             filter={filter}
             setFilter={setFilter}
           />
