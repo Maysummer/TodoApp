@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Josefin_Sans } from "next/font/google";
 import Image from "next/image";
+import ThemeSwitch from "@/components/ThemeSwitcher";
 
 const josefinSans = Josefin_Sans({
   subsets: ["latin"],
@@ -79,18 +80,13 @@ export default function Home() {
 
   return (
     <main
-      className={`bg-[url(/assets/images/bg-mobile-light.jpg)] bg-no-repeat bg-auto min-h-screen flex-col items-center ${josefinSans.className} bg-veryLightGrayishBlue px-6`}
+      className={`bg-[url(/assets/images/bg-mobile-light.jpg)] dark:bg-[url(/assets/images/bg-mobile-dark.jpg)] bg-no-repeat bg-auto min-h-screen flex-col items-center ${josefinSans.className} px-6 dark:bg-veryDarkBlue`}
     >
       <div className="flex justify-between items-center py-10">
         <h1 className="text-2xl font-bold tracking-[10px] text- ml-1 text-veryLightGray">
           TODO
         </h1>
-        <Image
-          src="/assets/icons/moon.svg"
-          alt="moon icon"
-          width={20}
-          height={20}
-        ></Image>
+        <ThemeSwitch />
       </div>
 
       <form>
@@ -103,7 +99,7 @@ export default function Home() {
               setInputValue(e.target.value);
             }}
             onKeyDown={(e) => handleAdd(e)}
-            className="h-12 indent-11 rounded-md focus:outline-none p-1.5 mb-4 w-full placeholder:text-sm"
+            className="h-12 dark:bg-veryDarkDesaturatedBlue indent-11 rounded-md focus:outline-none p-1.5 mb-4 w-full placeholder:text-sm"
           />
         </div>
       </form>
@@ -113,7 +109,7 @@ export default function Home() {
           {filteredTodos.map((item, index) => (
             <div
               key={index}
-              className="flex items-center bg-white first:rounded-t-md last:rounded-b-md h-12 p-1.5 justify-between mb-0.5"
+              className="dark:bg-veryDarkDesaturatedBlue flex items-center bg-white first:rounded-t-md last:rounded-b-md h-12 p-1.5 justify-between mb-0.5"
             >
               <div className="ml-3.5">
                 <input
@@ -139,12 +135,14 @@ export default function Home() {
                     }`}
                     onClick={() => handleToggle(item.id)}
                   >
-                    <Image
-                      src="/assets/icons/check.svg"
-                      alt="check mark"
-                      width={11}
-                      height={9}
-                    ></Image>
+                    {item.completed && (
+                      <Image
+                        src="/assets/icons/check.svg"
+                        alt="check mark"
+                        width={11}
+                        height={9}
+                      ></Image>
+                    )}
                   </span>
                   <span>{item.name}</span>
                 </label>
@@ -160,7 +158,7 @@ export default function Home() {
               />
             </div>
           ))}
-          <div className="bg-white first:rounded-t-md last:rounded-b-md h-12 text-lightGrayishBlue flex justify-between items-center pl-5 pr-5">
+          <div className="bg-white dark:bg-veryDarkDesaturatedBlue first:rounded-t-md last:rounded-b-md h-12 text-lightGrayishBlue flex justify-between items-center pl-5 pr-5">
             <p>
               {incomplete()} item{incomplete() === 1 ? "" : "s"} left
             </p>
@@ -169,7 +167,7 @@ export default function Home() {
             </p>
           </div>
         </ul>
-        <div className="bg-white rounded-md pl-20 pr-20 h-12 flex justify-between items-center text-darkGrayishBlue mt-4">
+        <div className="bg-white dark:bg-veryDarkDesaturatedBlue rounded-md pl-20 pr-20 h-12 flex justify-between items-center text-darkGrayishBlue mt-4">
           <b
             className={`cursor-pointer ${
               filter === "all"

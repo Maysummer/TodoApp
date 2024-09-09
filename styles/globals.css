@@ -18,12 +18,11 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: hsl(236, 33%, 92%);
+}
+
+[data-theme="dark"] body {
+  background-color: hsl(235, 24%, 19%);
 }
 
 @layer utilities {
