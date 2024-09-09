@@ -1,5 +1,5 @@
 // import ListItem from "@/components/list-item";
-import ListItem from "../components/list-item"
+import ListItem from "../components/TodoItem"
 import { useState } from "react";
 
 export default function AboutPage() {
