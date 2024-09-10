@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FIlterControls = ({classStyle, filter, setFilter}) => {
+const FilterControls = ({classStyle, filter, setFilter}) => {
   return (
     <div className={`bg-white dark:bg-veryDarkDesaturatedBlue text-darkGrayishBlue ${classStyle}`}>
             <b
@@ -37,4 +37,4 @@ const FIlterControls = ({classStyle, filter, setFilter}) => {
   )
 }
 
-export default FIlterControls
+export default FilterControls

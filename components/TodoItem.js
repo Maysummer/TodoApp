@@ -4,7 +4,7 @@ export default function TodoItem({ item, handleToggle, handleDelete }) {
   return (
     <div
       
-      className="dark:bg-veryDarkDesaturatedBlue flex items-center bg-white first:rounded-t-md last:rounded-b-md h-12 p-1.5 justify-between mb-0.5"
+      className="dark:bg-veryDarkDesaturatedBlue flex items-center bg-white  h-12 p-1.5 justify-between mb-0.5"
     >
       <div className="ml-3.5">
         <input

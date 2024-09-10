@@ -3,7 +3,8 @@ import { Josefin_Sans } from "next/font/google";
 import ThemeSwitch from "@/components/ThemeSwitcher";
 import TodoAddForm from "@/components/TodoAddForm";
 import TodoItem from "@/components/TodoItem";
-import FIlterControls from "@/components/FIlterControls";
+import FilterControls from "@/components/FIlterControls";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
 const josefinSans = Josefin_Sans({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function Home() {
           name: inputValue,
           completed: false,
         };
+        console.log({ todoItems });
         setTodoItems([...todoItems, newItem]);
         setInputValue("");
       } else {
@@ -43,6 +45,7 @@ export default function Home() {
   };
 
   const handleToggle = (id) => {
+    console.log({ todoItems });
     setTodoItems((prevTodoItems) =>
       prevTodoItems.map((item) =>
         item.id === id ? { ...item, completed: !item.completed } : item
@@ -51,21 +54,46 @@ export default function Home() {
   };
 
   const handleDelete = (id) => {
+    console.log({ todoItems });
     setTodoItems((prevItems) => prevItems.filter((todo) => todo.id !== id));
   };
 
   const incompleteCount = todoItems.filter((todo) => !todo.completed).length;
 
   const clearCompletedTodos = () => {
+    console.log({ todoItems });
     setTodoItems((prevItems) => prevItems.filter((todo) => !todo.completed));
+  };
+
+  const handleOnDragEnd = (result) => {
+    if (!result.destination) return;
+    console.log({ todoItems });
+    setTodoItems((prevItems) => {
+      const updatedItems = [...prevItems]; // Create a true copy of the array
+      const [reorderedItem] = updatedItems.splice(result.source.index, 1);
+      updatedItems.splice(result.destination.index, 0, reorderedItem);
+      console.log("1 Updated todoItems:", todoItems);
+
+      return updatedItems; // Return a new array
+    });
+    console.log("2 Updated todoItems:", todoItems);
   };
 
   useEffect(() => {
     const savedTodos = JSON.parse(localStorage.getItem("todos"));
-    if (savedTodos) setTodoItems(savedTodos);
+    console.log({ savedTodos });
+    console.log({ todoItems });
+    if (savedTodos) {
+      console.log("saved");
+      setTodoItems(savedTodos);
+      console.log({ todoItems });
+    }
+    console.log({ todoItems });
   }, []);
 
   useEffect(() => {
+    console.log({ todoItems });
+    console.log("set");
     localStorage.setItem("todos", JSON.stringify(todoItems));
   }, [todoItems]);
 
@@ -88,19 +116,45 @@ export default function Home() {
 
         <section className="text-sm">
           <ul>
-            {filteredTodos.map((item, index) => (
-              <TodoItem
-                item={item}
-                handleToggle={handleToggle}
-                handleDelete={handleDelete}
-                key={index}
-              />
-            ))}
+            <DragDropContext onDragEnd={handleOnDragEnd}>
+              <Droppable droppableId="droppable-1">
+                {(provided) => (
+                  <div {...provided.droppableProps} ref={provided.innerRef}>
+                    {filteredTodos.map((item, index) => (
+                      <Draggable
+                        key={item.id}
+                        draggableId={`${item.id}`}
+                        index={index}
+                        className=""
+                      >
+                        {(provided) => (
+                          <div
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            className="border-none first:rounded-t-md last:rounded-b-md"
+                          >
+                            <TodoItem
+                              item={item}
+                              handleToggle={handleToggle}
+                              handleDelete={handleDelete}
+                              key={index}
+                            />
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </DragDropContext>
+
             <div className="bg-white dark:bg-veryDarkDesaturatedBlue first:rounded-t-md last:rounded-b-md h-12 text-lightGrayishBlue flex justify-between items-center pl-5 pr-5">
               <p>
                 {incompleteCount} item{incompleteCount === 1 ? "" : "s"} left
               </p>
-              <FIlterControls
+              <FilterControls
                 classStyle="sm:flex gap-3 hidden"
                 filter={filter}
                 setFilter={setFilter}
@@ -110,7 +164,7 @@ export default function Home() {
               </p>
             </div>
           </ul>
-          <FIlterControls
+          <FilterControls
             classStyle="rounded-md h-12 flex justify-center items-center mt-4 sm:hidden"
             filter={filter}
             setFilter={setFilter}
