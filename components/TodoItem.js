@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function TodoItem({ index, item, handleToggle, handleDelete }) {
   return (
     <div
-      className={`dark:bg-veryDarkDesaturatedBlue bg-white flex items-center h-12 p-1.5 justify-between border-b-2 border-veryLightGrayishBlue dark:border-veryDarkGrayishBlue2 font-bold text-xs ${
+      className={`dark:bg-veryDarkDesaturatedBlue bg-white flex items-center h-12 p-1.5 justify-between border-b-2 border-veryLightGrayishBlue dark:border-veryDarkGrayishBlue2 font-bold text-xs largerScreen:text-sm ${
         index === 0 ? "rounded-t-md" : ""
       }`}
     >

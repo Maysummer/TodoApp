@@ -1,6 +1,6 @@
 import React from "react";
 
-const FilterControls = ({ classStyle, filter, setFilter }) => {
+const TodosFilterControls = ({ classStyle, filter, setFilter }) => {
   return (
     <div
       className={`bg-white dark:bg-veryDarkDesaturatedBlue text-[#a4a4a6] dark:text-[#535471] font-bold ${classStyle}`}
@@ -39,4 +39,4 @@ const FilterControls = ({ classStyle, filter, setFilter }) => {
   );
 };
 
-export default FilterControls;
+export default TodosFilterControls;

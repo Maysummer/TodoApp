@@ -4,7 +4,7 @@ import ThemeSwitch from "@/components/ThemeSwitcher";
 import TodoAddForm from "@/components/TodoAddForm";
 import TodoItem from "@/components/TodoItem";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import FilterControls from "@/components/FilterControls";
+import TodosFilterControls from "@/components/TodosFilterControls";
 
 const josefinSans = Josefin_Sans({
   subsets: ["latin"],
@@ -163,7 +163,7 @@ export default function Home() {
               <p>
                 {incompleteCount} item{incompleteCount === 1 ? "" : "s"} left
               </p>
-              <FilterControls
+              <TodosFilterControls
                 classStyle="sm:flex gap-3 hidden"
                 filter={filter}
                 setFilter={setFilter}
@@ -177,7 +177,7 @@ export default function Home() {
             </div>
           </ul>
 
-          <FilterControls
+          <TodosFilterControls
             classStyle="rounded-md h-12 flex justify-center gap-6 items-center mt-4 sm:hidden shadow-3xl"
             filter={filter}
             setFilter={setFilter}
