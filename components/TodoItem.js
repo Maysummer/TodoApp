@@ -1,10 +1,11 @@
 import Image from "next/image";
 
-export default function TodoItem({ item, handleToggle, handleDelete }) {
+export default function TodoItem({ index, item, handleToggle, handleDelete }) {
   return (
     <div
-      
-      className="dark:bg-veryDarkDesaturatedBlue flex items-center bg-white first:rounded-t-md last:rounded-b-md h-12 p-1.5 justify-between mb-0.5"
+      className={`dark:bg-veryDarkDesaturatedBlue bg-white flex items-center h-12 p-1.5 justify-between border-b-2 border-veryLightGrayishBlue dark:border-veryDarkGrayishBlue2 font-bold text-xs ${
+        index === 0 ? "rounded-t-md" : ""
+      }`}
     >
       <div className="ml-3.5">
         <input
@@ -17,18 +18,19 @@ export default function TodoItem({ item, handleToggle, handleDelete }) {
           htmlFor={item.name}
           className={`flex items-center gap-2.5 ${
             item.completed
-              ? "line-through text-darkGrayishBlue"
-              : "no-underline"
+              ? "line-through text-lightGrayishBlueL dark:text-veryDarkGrayishBlue1"
+              : "no-underline text-veryDarkGrayishBlue1 dark:text-lightGrayishBlueD"
           }`}
         >
           <span
-            className={`flex w-5 h-5 rounded-full border justify-center items-center ${
+            className={`flex w-5 h-5 rounded-full justify-center items-center ${
               item.completed
                 ? "bg-gradient-to-br from-gradBlue to-gradPurple"
-                : ""
+                : "border-2 dark:border-veryDarkGrayishBlue2  hover:border-none hover:bg-gradient-to-br hover:from-gradBlue hover:to-gradPurple hover:p-[1px]"
             }`}
             onClick={() => handleToggle(item.id)}
           >
+            {!item.completed && <span className="flex w-[calc(100%-1px)] h-[calc(100%-1px)] bg-white dark:bg-veryDarkDesaturatedBlue rounded-full"></span>}
             {item.completed && (
               <Image
                 src="/assets/icons/check.svg"

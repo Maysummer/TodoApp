@@ -1,40 +1,42 @@
-import React from 'react'
+import React from "react";
 
-const FIlterControls = ({classStyle, filter, setFilter}) => {
+const FilterControls = ({ classStyle, filter, setFilter }) => {
   return (
-    <div className={`bg-white dark:bg-veryDarkDesaturatedBlue text-darkGrayishBlue ${classStyle}`}>
-            <b
-              className={`cursor-pointer ${
-                filter === "all"
-                  ? "bg-gradient-to-br from-gradBlue to-gradPurple bg-clip-text text-transparent"
-                  : ""
-              }`}
-              onClick={() => setFilter("all")}
-            >
-              All
-            </b>
-            <b
-              className={`cursor-pointer ${
-                filter === "active"
-                  ? "bg-gradient-to-br from-gradBlue to-gradPurple bg-clip-text text-transparent"
-                  : ""
-              }`}
-              onClick={() => setFilter("active")}
-            >
-              Active
-            </b>
-            <b
-              className={`cursor-pointer ${
-                filter === "completed"
-                  ? "bg-gradient-to-br from-gradBlue to-gradPurple bg-clip-text text-transparent"
-                  : ""
-              }`}
-              onClick={() => setFilter("completed")}
-            >
-              Completed
-            </b>
-          </div>
-  )
-}
+    <div
+      className={`bg-white dark:bg-veryDarkDesaturatedBlue text-[#a4a4a6] dark:text-[#535471] font-bold ${classStyle}`}
+    >
+      <p
+        className={`cursor-pointer hover:text-veryDarkGrayishBlue1 dark:hover:text-lightGrayishBlueD ${
+          filter === "all"
+            ? "bg-gradient-to-br from-gradBlue to-gradPurple bg-clip-text text-transparent"
+            : ""
+        }`}
+        onClick={() => setFilter("all")}
+      >
+        All
+      </p>
+      <p
+        className={`cursor-pointer hover:text-veryDarkGrayishBlue1 dark:hover:text-lightGrayishBlueD ${
+          filter === "active"
+            ? "bg-gradient-to-br from-gradBlue to-gradPurple bg-clip-text text-transparent"
+            : ""
+        }`}
+        onClick={() => setFilter("active")}
+      >
+        Active
+      </p>
+      <p
+        className={`cursor-pointer hover:text-veryDarkGrayishBlue1 dark:hover:text-lightGrayishBlueD ${
+          filter === "completed"
+            ? "bg-gradient-to-br from-gradBlue to-gradPurple bg-clip-text text-transparent"
+            : ""
+        }`}
+        onClick={() => setFilter("completed")}
+      >
+        Completed
+      </p>
+    </div>
+  );
+};
 
-export default FIlterControls
+export default FilterControls;
