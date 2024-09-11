@@ -41,10 +41,10 @@ Users should be able to:
 
 ### Screenshot
 
-![](/assets/images/darklarge.jpeg)
-![](/assets/images/darksmall.jpeg)
-![](/assets/images/lightlarge.jpeg)
-![](/assets/images/lightsmall.jpeg)
+![](/public/assets/images/darklarge.jpeg)
+![](/public/assets/images/darksmall.jpeg)
+![](/public/assets/images/lightlarge.jpeg)
+![](/public/assets/images/lightsmall.jpeg)
 
 ### Links
 
