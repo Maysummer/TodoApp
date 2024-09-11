@@ -67,4 +67,4 @@ Users should be able to:
 ## Author
 
 - Website - [Nmesoma](https://portfolio1-one-lac.vercel.app/)
-- Frontend Mentor - [@Maysummwe](https://www.frontendmentor.io/profile/Maysummer)
+- Frontend Mentor - [@Maysummer](https://www.frontendmentor.io/profile/Maysummer)
